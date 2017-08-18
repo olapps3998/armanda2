@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<configuration date="2017/02/22" author="e.World Technology Ltd.">
+  <project id="{02A4272B-E84A-463D-9ED2-75398DF0A44A}" file="D:\xampp\htdocs\armanda2\armanda2.pmp" name="armanda2" product="PHPMaker" version="13.0" datetime="2017/02/22 13:07:24" languagefolder="phplang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0">
+    <table id="audittrail" name="audittrail" caption="audittrail" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="t_customer" name="t_customer" caption="Customer" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="t_fee" name="t_fee" caption="Fee" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="t_invoice" name="t_invoice" caption="Invoice" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="t_invoice_fee" name="t_invoice_fee" caption="Fee" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="t_invoice_pelaksanaan" name="t_invoice_pelaksanaan" caption="Pelaksanaan" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="t_user" name="t_user" caption="User" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="v_invoice_fee" name="v_invoice_fee" caption="v invoice fee" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="home_php" name="home.php" caption="Home" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="v_invoice_pelaksanaan" name="v_invoice_pelaksanaan" caption="v invoice pelaksanaan" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="v_rekap_invoice_all" name="v_rekap_invoice_all" caption="v rekap invoice all" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="v_rekap_invoice_ppn" name="v_rekap_invoice_ppn" caption="v rekap invoice ppn" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="v_rekap_hutang" name="v_rekap_hutang" caption="v rekap hutang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="c_invoice01_php" name="c_invoice01.php" caption="Cetak Invoice" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="c_kwitansi01_php" name="c_kwitansi01.php" caption="Kwitansi" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+  </project>
+</configuration>

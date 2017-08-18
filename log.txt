@@ -1,0 +1,180 @@
+4:09 PM 1/31/2017
+10. done;
+12. ---- upload to armanda2.890m.com;
+
+
+
+
+3:47 PM 1/31/2017
+08. done;
+10. progress;
+
+
+
+
+3:36 PM 1/31/2017
+08. perlu ditanyakan ke indri, tanggal invoice sementara aku ambil dari data terakhir;
+
+
+
+
+1:26 PM 1/31/2017
+08. break; kliatannya harus sama ngrokok, nanti malem aja ngerjainnya;
+	sampai dengan :: cek jika data lebih dari 1 record :: maka di-sum manual semua dulu;
+
+
+
+
+12:39 PM 1/31/2017
+08. ketemu solusi, tapi belum dikerjakan, mau makan siang dulu, laper;
+	solusi nya :: saat akan menggabungkan nomor invoice dalam satu nomor kwitansi, maka yang harus dilakukan adalah ::
+	menyamakan nomor kwitansi di beberapa nomor invoice;
+	progress;
+
+
+
+
+11:47 AM 1/31/2017
+04. done;
+08. progress;
+
+
+
+
+11:36 AM 1/31/2017
+01. done;
+02. done;
+03. done;
+04. progress;
+05. done;
+06. done;
+07. done;
+08. n/y;
+09. done;
+10. n/y;
+11. done;
+
+
+
+
+11:08 AM 1/31/2017
+pr dari indri :
+07. done;
+08. n/y = (not yet);
+09. done;
+10. n/y;
+11. done;
+
+
+
+
+3:08 AM 1/31/2017
+03. progress;
+
+
+
+
+10:30 AM 1/29/2017
+06. belum
+07. ---- qty :: decimal = done;
+08. ---- invoice gabungan;
+09. ---- tanggal pelaksanaan digabung di rekap invoice :: done;
+10. ---- flag periode proses data;
+11. ---- tgl invoice tidak tampil di rekap ppn;
+
+
+
+7:11 AM 1/27/2017
+05. done
+06. ---- rekap invoice ppn
+
+
+
+
+9:11 PM 1/26/2017
+05. create view v_invoice_pelaksanaan as
+SELECT 
+		invoice_id, 
+		group_concat(date_format(tanggal, '%d-%m-%Y') separator ', ') as tgl_pelaksanaan
+	FROM 
+		`t_invoice_pelaksanaan` 
+	group by 
+		invoice_id
+05.	SELECT 
+		invoice_id, 
+		group_concat(date_format(tanggal, '%d-%m-%Y')) 
+	FROM 
+		`t_invoice_pelaksanaan` 
+	group by 
+		invoice_id
+
+
+
+11:24 AM 1/26/2017
+05. ini mencoba modul cetak invoice (all), tapi diakal untuk memodifikasi tabel t_tmp_invoice_all,
+	- memodifikasinya dengan cara :: saat akan proses cetak :: tabel dikosongi, lalu diisi dengan data invoice_fee dan 
+	field tanggal pelaksanaan diisi berjajar dalam satu field
+	- masih diuji coba
+
+
+
+	
+12:50 PM 1/23/2017
+05. laporan - rekap - invoice (all)
+	- tgl invoice
+	- customer
+	- no. kwitansi
+	- no. invoice
+	- no. sertifikat
+	- tgl. pelaksanaan
+	- jumlah
+	truncate table t_tmp_invoice_all
+	insert into t_tmp_invoice_all SELECT null, tanggal, nama, no_kwitansi, nomor, no_sertifikat, null, total_ppn FROM t_invoice a left join t_customer b on a.customer_id = b.customer_id
+
+
+
+	
+11:24 AM 1/23/2017
+04. pending;
+05. ---- rekap all
+
+
+
+
+11:04 AM 1/23/2017
+03. pending;
+04. ---- cetak kwitansi
+
+
+
+5:04 PM 1/22/2017
+02. done
+03. ---- cetak invoice
+
+
+
+
+2:14 PM 1/22/2017
+- generate
+- sequence number
+- search quick
+- extended
+- view
+- add
+- copy
+- delete
+- edit
+- audit trail
+
+ 
+
+
+1:48 PM 1/21/2017
+02. ---- buat modul transaksi - invoice;
+01. done;
+
+
+
+
+1:44 PM 1/21/2017
+01. ---- buat struktur t_invoice_detail;
