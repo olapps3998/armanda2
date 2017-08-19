@@ -85,11 +85,11 @@ class crlookup {
 					for ($j = 0, $cnt = count($arValue); $j < $cnt; $j++) {
 						if ($wrkfilter <> "") $wrkfilter .= " OR ";
 						$val = $arValue[$j];
-						if ($val == EWR_NULL_VALUE)
+						if (ewr_SameStr($val, EWR_NULL_VALUE))
 							$wrkfilter .= str_replace(" = {filter_value}", " IS NULL", $filter);
-						elseif ($val == EWR_NOT_NULL_VALUE)
+						elseif (ewr_SameStr($val, EWR_NOT_NULL_VALUE))
 							$wrkfilter .= str_replace(" = {filter_value}", " IS NOT NULL", $filter);
-						elseif ($val == EWR_EMPTY_VALUE)
+						elseif (ewr_SameStr($val, EWR_EMPTY_VALUE))
 							$wrkfilter .= str_replace(" = {filter_value}", " = ''", $filter);
 						else
 							$wrkfilter .= str_replace("{filter_value}", ewr_QuotedValue($val, ewr_FieldDataType($fldtype), $dbid), $filter);

@@ -25,7 +25,7 @@ define("EW_CONFIG_FILE_FOLDER", EW_PROJECT_NAME, TRUE); // Config file name
 define("EW_PROJECT_ID", "{02A4272B-E84A-463D-9ED2-75398DF0A44A}", TRUE); // Project ID (GUID)
 $EW_RELATED_PROJECT_ID = "";
 $EW_RELATED_LANGUAGE_FOLDER = "";
-define("EW_RANDOM_KEY", 'fI4b25jGaWjIk042', TRUE); // Random key for encryption
+define("EW_RANDOM_KEY", '8xtcWabSg9uizEZN', TRUE); // Random key for encryption
 define("EW_PROJECT_STYLESHEET_FILENAME", "phpcss/armanda2.css", TRUE); // Project stylesheet file name
 define("EW_CHARSET", "", TRUE); // Project charset
 define("EW_EMAIL_CHARSET", EW_CHARSET, TRUE); // Email charset
@@ -205,7 +205,7 @@ define("EW_TABLE_GRID_ADD_ROW_COUNT", "gridaddcnt", TRUE); // Grid add row count
 // Audit Trail
 define("EW_AUDIT_TRAIL_TO_DATABASE", TRUE, TRUE); // Write audit trail to DB
 define("EW_AUDIT_TRAIL_DBID", "DB", TRUE); // Audit trail DBID
-define("EW_AUDIT_TRAIL_TABLE_NAME", "`audittrail`", TRUE); // Audit trail table name
+define("EW_AUDIT_TRAIL_TABLE_NAME", "audittrail", TRUE); // Audit trail table name
 define("EW_AUDIT_TRAIL_TABLE_VAR", "audittrail", TRUE); // Audit trail table var
 define("EW_AUDIT_TRAIL_FIELD_NAME_DATETIME", "datetime", TRUE); // Audit trail DateTime field name
 define("EW_AUDIT_TRAIL_FIELD_NAME_SCRIPT", "script", TRUE); // Audit trail Script field name
@@ -274,6 +274,7 @@ define("EW_SEARCH_FILTER_OPTION", "Client", TRUE);
 
 // Auto hide pager
 define("EW_AUTO_HIDE_PAGER", TRUE, TRUE);
+define("EW_AUTO_HIDE_PAGE_SIZE_SELECTOR", FALSE, TRUE);
 
 // Email
 define("EW_SMTP_SERVER", "localhost", TRUE); // SMTP server

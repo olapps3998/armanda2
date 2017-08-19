@@ -1,3 +1,30 @@
+7:55 PM 8/18/2017
+1. Rekap utang : 
+	per shipper tgl pelaksanaan dipisah bulannya.
+	Sebelumnya per shipper tgl pelaksanaan nya tdak ada pisahnya bulannya gabung jadi satu;
+	
+	done;
+
+2. Invoice dan kwitansi untuk nominal lebih 107 jt tampil nya 100 jt mentoknya;
+
+	ubah tipe field dari float(10,2) menjadi int(11);
+	done;
+
+3. Transaksi invoice :
+	klo mau bkin di tgl pelaksanaan klo bulan nya ada 2 ( contoh : 30 april , 2 agustus ) 
+	tampil d rekap all & rekap ppn tampil sendiri dgn nominal yg sma;
+	
+	done;
+
+4. Cetak kwitansi : 
+	form nya minta dituruni 5 spasi;
+
+	done;
+	
+	
+	
+	
+
 4:09 PM 1/31/2017
 10. done;
 12. ---- upload to armanda2.890m.com;

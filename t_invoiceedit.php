@@ -43,12 +43,6 @@ class ct_invoice_edit extends ct_invoice {
 		if ($this->UseTokenInUrl) $PageUrl .= "t=" . $this->TableVar . "&"; // Add page token
 		return $PageUrl;
 	}
-	var $AuditTrailOnAdd = FALSE;
-	var $AuditTrailOnEdit = TRUE;
-	var $AuditTrailOnDelete = FALSE;
-	var $AuditTrailOnView = FALSE;
-	var $AuditTrailOnViewData = FALSE;
-	var $AuditTrailOnSearch = FALSE;
 
 	// Message
 	function getMessage() {
@@ -1101,11 +1095,41 @@ class ct_invoice_edit extends ct_invoice {
 		if (!ew_CheckEuroDate($this->tanggal->FormValue)) {
 			ew_AddMessage($gsFormError, $this->tanggal->FldErrMsg());
 		}
+		if (!$this->no_order->FldIsDetailKey && !is_null($this->no_order->FormValue) && $this->no_order->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->no_order->FldCaption(), $this->no_order->ReqErrMsg));
+		}
+		if (!$this->no_referensi->FldIsDetailKey && !is_null($this->no_referensi->FormValue) && $this->no_referensi->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->no_referensi->FldCaption(), $this->no_referensi->ReqErrMsg));
+		}
+		if (!$this->kegiatan->FldIsDetailKey && !is_null($this->kegiatan->FormValue) && $this->kegiatan->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->kegiatan->FldCaption(), $this->kegiatan->ReqErrMsg));
+		}
+		if (!$this->no_sertifikat->FldIsDetailKey && !is_null($this->no_sertifikat->FormValue) && $this->no_sertifikat->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->no_sertifikat->FldCaption(), $this->no_sertifikat->ReqErrMsg));
+		}
+		if (!$this->keterangan->FldIsDetailKey && !is_null($this->keterangan->FormValue) && $this->keterangan->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->keterangan->FldCaption(), $this->keterangan->ReqErrMsg));
+		}
+		if (!$this->ppn->FldIsDetailKey && !is_null($this->ppn->FormValue) && $this->ppn->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->ppn->FldCaption(), $this->ppn->ReqErrMsg));
+		}
 		if (!ew_CheckInteger($this->ppn->FormValue)) {
 			ew_AddMessage($gsFormError, $this->ppn->FldErrMsg());
 		}
+		if ($this->terbayar->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->terbayar->FldCaption(), $this->terbayar->ReqErrMsg));
+		}
 		if (!ew_CheckEuroDate($this->tgl_bayar->FormValue)) {
 			ew_AddMessage($gsFormError, $this->tgl_bayar->FldErrMsg());
+		}
+		if ($this->pasal23->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->pasal23->FldCaption(), $this->pasal23->ReqErrMsg));
+		}
+		if (!$this->no_kwitansi->FldIsDetailKey && !is_null($this->no_kwitansi->FormValue) && $this->no_kwitansi->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->no_kwitansi->FldCaption(), $this->no_kwitansi->ReqErrMsg));
+		}
+		if (!$this->periode->FldIsDetailKey && !is_null($this->periode->FormValue) && $this->periode->FormValue == "") {
+			ew_AddMessage($gsFormError, str_replace("%s", $this->periode->FldCaption(), $this->periode->ReqErrMsg));
 		}
 		if (!ew_CheckEuroDate($this->periode->FormValue)) {
 			ew_AddMessage($gsFormError, $this->periode->FldErrMsg());
@@ -1171,37 +1195,37 @@ class ct_invoice_edit extends ct_invoice {
 			$this->tanggal->SetDbValueDef($rsnew, ew_UnFormatDateTime($this->tanggal->CurrentValue, 7), ew_CurrentDate(), $this->tanggal->ReadOnly);
 
 			// no_order
-			$this->no_order->SetDbValueDef($rsnew, $this->no_order->CurrentValue, NULL, $this->no_order->ReadOnly);
+			$this->no_order->SetDbValueDef($rsnew, $this->no_order->CurrentValue, "", $this->no_order->ReadOnly);
 
 			// no_referensi
-			$this->no_referensi->SetDbValueDef($rsnew, $this->no_referensi->CurrentValue, NULL, $this->no_referensi->ReadOnly);
+			$this->no_referensi->SetDbValueDef($rsnew, $this->no_referensi->CurrentValue, "", $this->no_referensi->ReadOnly);
 
 			// kegiatan
-			$this->kegiatan->SetDbValueDef($rsnew, $this->kegiatan->CurrentValue, NULL, $this->kegiatan->ReadOnly);
+			$this->kegiatan->SetDbValueDef($rsnew, $this->kegiatan->CurrentValue, "", $this->kegiatan->ReadOnly);
 
 			// no_sertifikat
-			$this->no_sertifikat->SetDbValueDef($rsnew, $this->no_sertifikat->CurrentValue, NULL, $this->no_sertifikat->ReadOnly);
+			$this->no_sertifikat->SetDbValueDef($rsnew, $this->no_sertifikat->CurrentValue, "", $this->no_sertifikat->ReadOnly);
 
 			// keterangan
-			$this->keterangan->SetDbValueDef($rsnew, $this->keterangan->CurrentValue, NULL, $this->keterangan->ReadOnly);
+			$this->keterangan->SetDbValueDef($rsnew, $this->keterangan->CurrentValue, "", $this->keterangan->ReadOnly);
 
 			// ppn
-			$this->ppn->SetDbValueDef($rsnew, $this->ppn->CurrentValue, NULL, $this->ppn->ReadOnly);
+			$this->ppn->SetDbValueDef($rsnew, $this->ppn->CurrentValue, 0, $this->ppn->ReadOnly);
 
 			// terbayar
-			$this->terbayar->SetDbValueDef($rsnew, $this->terbayar->CurrentValue, NULL, $this->terbayar->ReadOnly);
+			$this->terbayar->SetDbValueDef($rsnew, $this->terbayar->CurrentValue, 0, $this->terbayar->ReadOnly);
 
 			// tgl_bayar
 			$this->tgl_bayar->SetDbValueDef($rsnew, ew_UnFormatDateTime($this->tgl_bayar->CurrentValue, 7), NULL, $this->tgl_bayar->ReadOnly);
 
 			// pasal23
-			$this->pasal23->SetDbValueDef($rsnew, $this->pasal23->CurrentValue, NULL, $this->pasal23->ReadOnly);
+			$this->pasal23->SetDbValueDef($rsnew, $this->pasal23->CurrentValue, 0, $this->pasal23->ReadOnly);
 
 			// no_kwitansi
-			$this->no_kwitansi->SetDbValueDef($rsnew, $this->no_kwitansi->CurrentValue, NULL, $this->no_kwitansi->ReadOnly);
+			$this->no_kwitansi->SetDbValueDef($rsnew, $this->no_kwitansi->CurrentValue, "", $this->no_kwitansi->ReadOnly);
 
 			// periode
-			$this->periode->SetDbValueDef($rsnew, ew_UnFormatDateTime($this->periode->CurrentValue, 7), NULL, $this->periode->ReadOnly);
+			$this->periode->SetDbValueDef($rsnew, ew_UnFormatDateTime($this->periode->CurrentValue, 7), ew_CurrentDate(), $this->periode->ReadOnly);
 
 			// Call Row Updating event
 			$bUpdateRow = $this->Row_Updating($rsold, $rsnew);
@@ -1259,9 +1283,6 @@ class ct_invoice_edit extends ct_invoice {
 		// Call Row_Updated event
 		if ($EditRow)
 			$this->Row_Updated($rsold, $rsnew);
-		if ($EditRow) {
-			$this->WriteAuditTrailOnEdit($rsold, $rsnew);
-		}
 		$rs->Close();
 		return $EditRow;
 	}
@@ -1355,60 +1376,6 @@ class ct_invoice_edit extends ct_invoice {
 		global $gsLanguage;
 		$pageId = $pageId ?: $this->PageID;
 		switch ($fld->FldVar) {
-		}
-	}
-
-	// Write Audit Trail start/end for grid update
-	function WriteAuditTrailDummy($typ) {
-		$table = 't_invoice';
-		$usr = CurrentUserID();
-		ew_WriteAuditTrail("log", ew_StdCurrentDateTime(), ew_ScriptName(), $usr, $typ, $table, "", "", "", "");
-	}
-
-	// Write Audit Trail (edit page)
-	function WriteAuditTrailOnEdit(&$rsold, &$rsnew) {
-		global $Language;
-		if (!$this->AuditTrailOnEdit) return;
-		$table = 't_invoice';
-
-		// Get key value
-		$key = "";
-		if ($key <> "") $key .= $GLOBALS["EW_COMPOSITE_KEY_SEPARATOR"];
-		$key .= $rsold['invoice_id'];
-
-		// Write Audit Trail
-		$dt = ew_StdCurrentDateTime();
-		$id = ew_ScriptName();
-		$usr = CurrentUserID();
-		foreach (array_keys($rsnew) as $fldname) {
-			if ($this->fields[$fldname]->FldDataType <> EW_DATATYPE_BLOB) { // Ignore BLOB fields
-				if ($this->fields[$fldname]->FldDataType == EW_DATATYPE_DATE) { // DateTime field
-					$modified = (ew_FormatDateTime($rsold[$fldname], 0) <> ew_FormatDateTime($rsnew[$fldname], 0));
-				} else {
-					$modified = !ew_CompareValue($rsold[$fldname], $rsnew[$fldname]);
-				}
-				if ($modified) {
-					if ($this->fields[$fldname]->FldHtmlTag == "PASSWORD") { // Password Field
-						$oldvalue = $Language->Phrase("PasswordMask");
-						$newvalue = $Language->Phrase("PasswordMask");
-					} elseif ($this->fields[$fldname]->FldDataType == EW_DATATYPE_MEMO) { // Memo field
-						if (EW_AUDIT_TRAIL_TO_DATABASE) {
-							$oldvalue = $rsold[$fldname];
-							$newvalue = $rsnew[$fldname];
-						} else {
-							$oldvalue = "[MEMO]";
-							$newvalue = "[MEMO]";
-						}
-					} elseif ($this->fields[$fldname]->FldDataType == EW_DATATYPE_XML) { // XML field
-						$oldvalue = "[XML]";
-						$newvalue = "[XML]";
-					} else {
-						$oldvalue = $rsold[$fldname];
-						$newvalue = $rsnew[$fldname];
-					}
-					ew_WriteAuditTrail("log", $dt, $id, $usr, "U", $table, $fldname, $key, $oldvalue, $newvalue);
-				}
-			}
 		}
 	}
 
@@ -1532,12 +1499,42 @@ ft_invoiceedit.Validate = function() {
 			elm = this.GetElements("x" + infix + "_tanggal");
 			if (elm && !ew_CheckEuroDate(elm.value))
 				return this.OnError(elm, "<?php echo ew_JsEncode2($t_invoice->tanggal->FldErrMsg()) ?>");
+			elm = this.GetElements("x" + infix + "_no_order");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->no_order->FldCaption(), $t_invoice->no_order->ReqErrMsg)) ?>");
+			elm = this.GetElements("x" + infix + "_no_referensi");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->no_referensi->FldCaption(), $t_invoice->no_referensi->ReqErrMsg)) ?>");
+			elm = this.GetElements("x" + infix + "_kegiatan");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->kegiatan->FldCaption(), $t_invoice->kegiatan->ReqErrMsg)) ?>");
+			elm = this.GetElements("x" + infix + "_no_sertifikat");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->no_sertifikat->FldCaption(), $t_invoice->no_sertifikat->ReqErrMsg)) ?>");
+			elm = this.GetElements("x" + infix + "_keterangan");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->keterangan->FldCaption(), $t_invoice->keterangan->ReqErrMsg)) ?>");
+			elm = this.GetElements("x" + infix + "_ppn");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->ppn->FldCaption(), $t_invoice->ppn->ReqErrMsg)) ?>");
 			elm = this.GetElements("x" + infix + "_ppn");
 			if (elm && !ew_CheckInteger(elm.value))
 				return this.OnError(elm, "<?php echo ew_JsEncode2($t_invoice->ppn->FldErrMsg()) ?>");
+			elm = this.GetElements("x" + infix + "_terbayar");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->terbayar->FldCaption(), $t_invoice->terbayar->ReqErrMsg)) ?>");
 			elm = this.GetElements("x" + infix + "_tgl_bayar");
 			if (elm && !ew_CheckEuroDate(elm.value))
 				return this.OnError(elm, "<?php echo ew_JsEncode2($t_invoice->tgl_bayar->FldErrMsg()) ?>");
+			elm = this.GetElements("x" + infix + "_pasal23");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->pasal23->FldCaption(), $t_invoice->pasal23->ReqErrMsg)) ?>");
+			elm = this.GetElements("x" + infix + "_no_kwitansi");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->no_kwitansi->FldCaption(), $t_invoice->no_kwitansi->ReqErrMsg)) ?>");
+			elm = this.GetElements("x" + infix + "_periode");
+			if (elm && !ew_IsHidden(elm) && !ew_HasValue(elm))
+				return this.OnError(elm, "<?php echo ew_JsEncode2(str_replace("%s", $t_invoice->periode->FldCaption(), $t_invoice->periode->ReqErrMsg)) ?>");
 			elm = this.GetElements("x" + infix + "_periode");
 			if (elm && !ew_CheckEuroDate(elm.value))
 				return this.OnError(elm, "<?php echo ew_JsEncode2($t_invoice->periode->FldErrMsg()) ?>");
@@ -1652,7 +1649,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tanggal", 7);
 <?php } ?>
 <?php if ($t_invoice->no_order->Visible) { // no_order ?>
 	<div id="r_no_order" class="form-group">
-		<label id="elh_t_invoice_no_order" for="x_no_order" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->no_order->FldCaption() ?></label>
+		<label id="elh_t_invoice_no_order" for="x_no_order" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->no_order->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->no_order->CellAttributes() ?>>
 <span id="el_t_invoice_no_order">
 <input type="text" data-table="t_invoice" data-field="x_no_order" name="x_no_order" id="x_no_order" size="30" maxlength="100" placeholder="<?php echo ew_HtmlEncode($t_invoice->no_order->getPlaceHolder()) ?>" value="<?php echo $t_invoice->no_order->EditValue ?>"<?php echo $t_invoice->no_order->EditAttributes() ?>>
@@ -1662,7 +1659,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tanggal", 7);
 <?php } ?>
 <?php if ($t_invoice->no_referensi->Visible) { // no_referensi ?>
 	<div id="r_no_referensi" class="form-group">
-		<label id="elh_t_invoice_no_referensi" for="x_no_referensi" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->no_referensi->FldCaption() ?></label>
+		<label id="elh_t_invoice_no_referensi" for="x_no_referensi" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->no_referensi->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->no_referensi->CellAttributes() ?>>
 <span id="el_t_invoice_no_referensi">
 <input type="text" data-table="t_invoice" data-field="x_no_referensi" name="x_no_referensi" id="x_no_referensi" size="30" maxlength="100" placeholder="<?php echo ew_HtmlEncode($t_invoice->no_referensi->getPlaceHolder()) ?>" value="<?php echo $t_invoice->no_referensi->EditValue ?>"<?php echo $t_invoice->no_referensi->EditAttributes() ?>>
@@ -1672,7 +1669,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tanggal", 7);
 <?php } ?>
 <?php if ($t_invoice->kegiatan->Visible) { // kegiatan ?>
 	<div id="r_kegiatan" class="form-group">
-		<label id="elh_t_invoice_kegiatan" for="x_kegiatan" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->kegiatan->FldCaption() ?></label>
+		<label id="elh_t_invoice_kegiatan" for="x_kegiatan" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->kegiatan->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->kegiatan->CellAttributes() ?>>
 <span id="el_t_invoice_kegiatan">
 <textarea data-table="t_invoice" data-field="x_kegiatan" name="x_kegiatan" id="x_kegiatan" cols="35" rows="4" placeholder="<?php echo ew_HtmlEncode($t_invoice->kegiatan->getPlaceHolder()) ?>"<?php echo $t_invoice->kegiatan->EditAttributes() ?>><?php echo $t_invoice->kegiatan->EditValue ?></textarea>
@@ -1682,7 +1679,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tanggal", 7);
 <?php } ?>
 <?php if ($t_invoice->no_sertifikat->Visible) { // no_sertifikat ?>
 	<div id="r_no_sertifikat" class="form-group">
-		<label id="elh_t_invoice_no_sertifikat" for="x_no_sertifikat" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->no_sertifikat->FldCaption() ?></label>
+		<label id="elh_t_invoice_no_sertifikat" for="x_no_sertifikat" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->no_sertifikat->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->no_sertifikat->CellAttributes() ?>>
 <span id="el_t_invoice_no_sertifikat">
 <textarea data-table="t_invoice" data-field="x_no_sertifikat" name="x_no_sertifikat" id="x_no_sertifikat" cols="35" rows="4" placeholder="<?php echo ew_HtmlEncode($t_invoice->no_sertifikat->getPlaceHolder()) ?>"<?php echo $t_invoice->no_sertifikat->EditAttributes() ?>><?php echo $t_invoice->no_sertifikat->EditValue ?></textarea>
@@ -1692,7 +1689,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tanggal", 7);
 <?php } ?>
 <?php if ($t_invoice->keterangan->Visible) { // keterangan ?>
 	<div id="r_keterangan" class="form-group">
-		<label id="elh_t_invoice_keterangan" for="x_keterangan" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->keterangan->FldCaption() ?></label>
+		<label id="elh_t_invoice_keterangan" for="x_keterangan" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->keterangan->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->keterangan->CellAttributes() ?>>
 <span id="el_t_invoice_keterangan">
 <textarea data-table="t_invoice" data-field="x_keterangan" name="x_keterangan" id="x_keterangan" cols="35" rows="4" placeholder="<?php echo ew_HtmlEncode($t_invoice->keterangan->getPlaceHolder()) ?>"<?php echo $t_invoice->keterangan->EditAttributes() ?>><?php echo $t_invoice->keterangan->EditValue ?></textarea>
@@ -1702,7 +1699,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tanggal", 7);
 <?php } ?>
 <?php if ($t_invoice->ppn->Visible) { // ppn ?>
 	<div id="r_ppn" class="form-group">
-		<label id="elh_t_invoice_ppn" for="x_ppn" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->ppn->FldCaption() ?></label>
+		<label id="elh_t_invoice_ppn" for="x_ppn" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->ppn->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->ppn->CellAttributes() ?>>
 <span id="el_t_invoice_ppn">
 <input type="text" data-table="t_invoice" data-field="x_ppn" name="x_ppn" id="x_ppn" size="30" placeholder="<?php echo ew_HtmlEncode($t_invoice->ppn->getPlaceHolder()) ?>" value="<?php echo $t_invoice->ppn->EditValue ?>"<?php echo $t_invoice->ppn->EditAttributes() ?>>
@@ -1712,7 +1709,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tanggal", 7);
 <?php } ?>
 <?php if ($t_invoice->terbayar->Visible) { // terbayar ?>
 	<div id="r_terbayar" class="form-group">
-		<label id="elh_t_invoice_terbayar" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->terbayar->FldCaption() ?></label>
+		<label id="elh_t_invoice_terbayar" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->terbayar->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->terbayar->CellAttributes() ?>>
 <span id="el_t_invoice_terbayar">
 <div id="tp_x_terbayar" class="ewTemplate"><input type="radio" data-table="t_invoice" data-field="x_terbayar" data-value-separator="<?php echo $t_invoice->terbayar->DisplayValueSeparatorAttribute() ?>" name="x_terbayar" id="x_terbayar" value="{value}"<?php echo $t_invoice->terbayar->EditAttributes() ?>></div>
@@ -1740,7 +1737,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tgl_bayar", 7);
 <?php } ?>
 <?php if ($t_invoice->pasal23->Visible) { // pasal23 ?>
 	<div id="r_pasal23" class="form-group">
-		<label id="elh_t_invoice_pasal23" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->pasal23->FldCaption() ?></label>
+		<label id="elh_t_invoice_pasal23" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->pasal23->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->pasal23->CellAttributes() ?>>
 <span id="el_t_invoice_pasal23">
 <div id="tp_x_pasal23" class="ewTemplate"><input type="radio" data-table="t_invoice" data-field="x_pasal23" data-value-separator="<?php echo $t_invoice->pasal23->DisplayValueSeparatorAttribute() ?>" name="x_pasal23" id="x_pasal23" value="{value}"<?php echo $t_invoice->pasal23->EditAttributes() ?>></div>
@@ -1753,7 +1750,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tgl_bayar", 7);
 <?php } ?>
 <?php if ($t_invoice->no_kwitansi->Visible) { // no_kwitansi ?>
 	<div id="r_no_kwitansi" class="form-group">
-		<label id="elh_t_invoice_no_kwitansi" for="x_no_kwitansi" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->no_kwitansi->FldCaption() ?></label>
+		<label id="elh_t_invoice_no_kwitansi" for="x_no_kwitansi" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->no_kwitansi->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->no_kwitansi->CellAttributes() ?>>
 <span id="el_t_invoice_no_kwitansi">
 <input type="text" data-table="t_invoice" data-field="x_no_kwitansi" name="x_no_kwitansi" id="x_no_kwitansi" size="30" maxlength="100" placeholder="<?php echo ew_HtmlEncode($t_invoice->no_kwitansi->getPlaceHolder()) ?>" value="<?php echo $t_invoice->no_kwitansi->EditValue ?>"<?php echo $t_invoice->no_kwitansi->EditAttributes() ?>>
@@ -1763,7 +1760,7 @@ ew_CreateCalendar("ft_invoiceedit", "x_tgl_bayar", 7);
 <?php } ?>
 <?php if ($t_invoice->periode->Visible) { // periode ?>
 	<div id="r_periode" class="form-group">
-		<label id="elh_t_invoice_periode" for="x_periode" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->periode->FldCaption() ?></label>
+		<label id="elh_t_invoice_periode" for="x_periode" class="col-sm-2 control-label ewLabel"><?php echo $t_invoice->periode->FldCaption() ?><?php echo $Language->Phrase("FieldRequiredIndicator") ?></label>
 		<div class="col-sm-10"><div<?php echo $t_invoice->periode->CellAttributes() ?>>
 <span id="el_t_invoice_periode">
 <input type="text" data-table="t_invoice" data-field="x_periode" data-format="7" name="x_periode" id="x_periode" placeholder="<?php echo ew_HtmlEncode($t_invoice->periode->getPlaceHolder()) ?>" value="<?php echo $t_invoice->periode->EditValue ?>"<?php echo $t_invoice->periode->EditAttributes() ?>>

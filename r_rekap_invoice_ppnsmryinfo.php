@@ -118,7 +118,7 @@ class crr_rekap_invoice_ppn extends crTableBase {
 		$this->no_referensi->SqlOrderBy = "";
 
 		// nilai_ppn
-		$this->nilai_ppn = new crField('r_rekap_invoice_ppn', 'r_rekap_invoice_ppn', 'x_nilai_ppn', 'nilai_ppn', '`nilai_ppn`', 5, EWR_DATATYPE_NUMBER, -1);
+		$this->nilai_ppn = new crField('r_rekap_invoice_ppn', 'r_rekap_invoice_ppn', 'x_nilai_ppn', 'nilai_ppn', '`nilai_ppn`', 131, EWR_DATATYPE_NUMBER, -1);
 		$this->nilai_ppn->Sortable = TRUE; // Allow sort
 		$this->nilai_ppn->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectFloat");
 		$this->fields['nilai_ppn'] = &$this->nilai_ppn;
@@ -127,7 +127,7 @@ class crr_rekap_invoice_ppn extends crTableBase {
 		$this->nilai_ppn->SqlOrderBy = "";
 
 		// total_ppn
-		$this->total_ppn = new crField('r_rekap_invoice_ppn', 'r_rekap_invoice_ppn', 'x_total_ppn', 'total_ppn', '`total_ppn`', 4, EWR_DATATYPE_NUMBER, -1);
+		$this->total_ppn = new crField('r_rekap_invoice_ppn', 'r_rekap_invoice_ppn', 'x_total_ppn', 'total_ppn', '`total_ppn`', 3, EWR_DATATYPE_NUMBER, -1);
 		$this->total_ppn->Sortable = TRUE; // Allow sort
 		$this->total_ppn->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectFloat");
 		$this->fields['total_ppn'] = &$this->total_ppn;
@@ -432,7 +432,7 @@ class crr_rekap_invoice_ppn extends crTableBase {
 		$sSqlWrk = "SELECT DISTINCT `periode_short`, `periode_short` AS `DispFld`, '' AS `DispFld2`, '' AS `DispFld3`, '' AS `DispFld4` FROM `v_rekap_invoice_ppn`";
 		$sWhereWrk = "";
 		$this->periode_short->LookupFilters = array();
-			$fld->LookupFilters += array("s" => $sSqlWrk, "d" => "DB", "f0" => '`periode_short` = {filter_value}', "t0" => "200", "fn0" => "");
+			$fld->LookupFilters += array("s" => $sSqlWrk, "d" => "DB", "f0" => '`periode_short` = {filter_value}', "t0" => "200", "fn0" => "", "dlm" => ewr_Encrypt($fld->FldDelimiter));
 			$sSqlWrk = "";
 		$this->Lookup_Selecting($this->periode_short, $sWhereWrk); // Call Lookup selecting
 		if ($sWhereWrk <> "") $sSqlWrk .= " WHERE " . $sWhereWrk;

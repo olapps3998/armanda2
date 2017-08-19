@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<ew-language date="2017/2/23" version="10.0.0" id="en" name="English" desc="English" author="e.World Technology Ltd.">
+<ew-language date="2017/8/19" version="10.0.0" id="en" name="English" desc="English" author="e.World Technology Ltd.">
   <!-- 
 	*** Important Notes:
 	1. Language ID should follow: https://developers.google.com/recaptcha/docs/language,
@@ -350,6 +350,15 @@
   <project>
     <phrase id="bodytitle" value="Armanda" />
     <phrase id="footertext" value="&amp;copy;2017 e.World Technology Ltd. All rights reserved." />
+    <menu id="20">
+      <phrase id="menutext" value="v invoice pelaksanaan bln" />
+    </menu>
+    <menu id="21">
+      <phrase id="menutext" value="v rekap hutang bln" />
+    </menu>
+    <menu id="22">
+      <phrase id="menutext" value="Rekap Hutang (Group by Bulan)" />
+    </menu>
     <menu id="18">
       <phrase id="menutext" value="v rekap hutang" />
     </menu>
@@ -855,6 +864,66 @@
       </field>
       <field id="invoice_id">
         <phrase id="fldcaption" value="invoice id" />
+      </field>
+    </table>
+    <table id="v_invoice_pelaksanaan_bln">
+      <phrase id="tblcaption" value="v invoice pelaksanaan bln" />
+      <field id="invoice_id">
+        <phrase id="fldcaption" value="invoice id" />
+      </field>
+      <field id="tgl_pelaksanaan">
+        <phrase id="fldcaption" value="tgl pelaksanaan" />
+      </field>
+      <field id="bln_pelaksanaan">
+        <phrase id="fldcaption" value="bln pelaksanaan" />
+      </field>
+    </table>
+    <table id="v_rekap_hutang_bln">
+      <phrase id="tblcaption" value="v rekap hutang bln" />
+      <field id="nama">
+        <phrase id="fldcaption" value="nama" />
+      </field>
+      <field id="tgl_pelaksanaan">
+        <phrase id="fldcaption" value="tgl pelaksanaan" />
+      </field>
+      <field id="no_kwitansi">
+        <phrase id="fldcaption" value="no kwitansi" />
+      </field>
+      <field id="nomor">
+        <phrase id="fldcaption" value="nomor" />
+      </field>
+      <field id="total_ppn">
+        <phrase id="fldcaption" value="total ppn" />
+      </field>
+      <field id="invoice_id">
+        <phrase id="fldcaption" value="invoice id" />
+      </field>
+      <field id="bln_pelaksanaan">
+        <phrase id="fldcaption" value="bln pelaksanaan" />
+      </field>
+    </table>
+    <table id="r_rekap_hutang_bln">
+      <phrase id="tblcaption" value="Rekap Hutang (Group by Bulan)" />
+      <field id="nama">
+        <phrase id="fldcaption" value="Customer" />
+      </field>
+      <field id="tgl_pelaksanaan">
+        <phrase id="fldcaption" value="Tgl. Pelaksanaan" />
+      </field>
+      <field id="no_kwitansi">
+        <phrase id="fldcaption" value="No. KW." />
+      </field>
+      <field id="nomor">
+        <phrase id="fldcaption" value="No. INV." />
+      </field>
+      <field id="total_ppn">
+        <phrase id="fldcaption" value="Rp." />
+      </field>
+      <field id="invoice_id">
+        <phrase id="fldcaption" value="invoice id" />
+      </field>
+      <field id="bln_pelaksanaan">
+        <phrase id="fldcaption" value="Bln." />
       </field>
     </table>
   </project>

@@ -17,6 +17,8 @@ $RootMenu->AddMenuItem(10012, "mmci_Laporan", $Language->MenuPhrase("10012", "Me
 $RootMenu->AddMenuItem(10011, "mmri_r5frekap5finvoice5fall", $Language->MenuPhrase("10011", "MenuText"), "r_rekap_invoice_allsmry.php", 10012, "{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}", AllowListMenu('{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}r_rekap_invoice_all'), FALSE, FALSE);
 $RootMenu->AddMenuItem(10018, "mmri_r5frekap5finvoice5fppn", $Language->MenuPhrase("10018", "MenuText"), "r_rekap_invoice_ppnsmry.php", 10012, "{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}", AllowListMenu('{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}r_rekap_invoice_ppn'), FALSE, FALSE);
 $RootMenu->AddMenuItem(10021, "mmri_r5frekap5fhutang", $Language->MenuPhrase("10021", "MenuText"), "r_rekap_hutangsmry.php", 10012, "{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}", AllowListMenu('{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}r_rekap_hutang'), FALSE, FALSE);
+$RootMenu->AddMenuItem(10059, "mmri_r5frekap5fhutang5fbln", $Language->MenuPhrase("10059", "MenuText"), "r_rekap_hutang_blnsmry.php", 10012, "{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}", AllowListMenu('{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}r_rekap_hutang_bln'), FALSE, FALSE);
+$RootMenu->AddMenuItem(10060, "mmci_Laporan", $Language->MenuPhrase("10060", "MenuText"), "", -1, "{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}", IsLoggedIn(), FALSE, TRUE);
 $RootMenu->AddMenuItem(-2, "mmi_changepwd", $Language->Phrase("ChangePwd"), "changepwd.php", -1, "", IsLoggedIn() && !IsSysAdmin());
 $RootMenu->AddMenuItem(-1, "mmi_logout", $Language->Phrase("Logout"), "logout.php", -1, "", IsLoggedIn());
 $RootMenu->AddMenuItem(-1, "mmi_login", $Language->Phrase("Login"), "login.php", -1, "", !IsLoggedIn() && substr(@$_SERVER["URL"], -1 * strlen("login.php")) <> "login.php");

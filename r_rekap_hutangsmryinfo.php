@@ -68,7 +68,7 @@ class crr_rekap_hutang extends crTableBase {
 		$this->nomor->SqlOrderBy = "";
 
 		// total_ppn
-		$this->total_ppn = new crField('r_rekap_hutang', 'r_rekap_hutang', 'x_total_ppn', 'total_ppn', '`total_ppn`', 4, EWR_DATATYPE_NUMBER, -1);
+		$this->total_ppn = new crField('r_rekap_hutang', 'r_rekap_hutang', 'x_total_ppn', 'total_ppn', '`total_ppn`', 3, EWR_DATATYPE_NUMBER, -1);
 		$this->total_ppn->Sortable = TRUE; // Allow sort
 		$this->total_ppn->FldDefaultErrMsg = $ReportLanguage->Phrase("IncorrectFloat");
 		$this->fields['total_ppn'] = &$this->total_ppn;
@@ -373,7 +373,7 @@ class crr_rekap_hutang extends crTableBase {
 		$sSqlWrk = "SELECT DISTINCT `nama`, `nama` AS `DispFld`, '' AS `DispFld2`, '' AS `DispFld3`, '' AS `DispFld4` FROM `v_rekap_hutang`";
 		$sWhereWrk = "";
 		$this->nama->LookupFilters = array();
-			$fld->LookupFilters += array("s" => $sSqlWrk, "d" => "DB", "f0" => '`nama` = {filter_value}', "t0" => "200", "fn0" => "");
+			$fld->LookupFilters += array("s" => $sSqlWrk, "d" => "DB", "f0" => '`nama` = {filter_value}', "t0" => "200", "fn0" => "", "dlm" => ewr_Encrypt($fld->FldDelimiter));
 			$sSqlWrk = "";
 		$this->Lookup_Selecting($this->nama, $sWhereWrk); // Call Lookup selecting
 		if ($sWhereWrk <> "") $sSqlWrk .= " WHERE " . $sWhereWrk;

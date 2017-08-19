@@ -282,16 +282,6 @@ class cdefault {
 			$this->Page_Terminate("t_invoice_pelaksanaanlist.php");
 		if ($Security->AllowList(CurrentProjectID() . 't_user'))
 			$this->Page_Terminate("t_userlist.php");
-		if ($Security->AllowList(CurrentProjectID() . 'v_invoice_fee'))
-			$this->Page_Terminate("v_invoice_feelist.php");
-		if ($Security->AllowList(CurrentProjectID() . 'v_invoice_pelaksanaan'))
-			$this->Page_Terminate("v_invoice_pelaksanaanlist.php");
-		if ($Security->AllowList(CurrentProjectID() . 'v_rekap_invoice_all'))
-			$this->Page_Terminate("v_rekap_invoice_alllist.php");
-		if ($Security->AllowList(CurrentProjectID() . 'v_rekap_invoice_ppn'))
-			$this->Page_Terminate("v_rekap_invoice_ppnlist.php");
-		if ($Security->AllowList(CurrentProjectID() . 'v_rekap_hutang'))
-			$this->Page_Terminate("v_rekap_hutanglist.php");
 		if ($Security->AllowList(CurrentProjectID() . 'c_invoice01.php'))
 			$this->Page_Terminate("c_invoice01.php");
 		if ($Security->AllowList(CurrentProjectID() . 'c_kwitansi01.php'))

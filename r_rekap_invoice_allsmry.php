@@ -874,7 +874,7 @@ class crr_rekap_invoice_all_summary extends crr_rekap_invoice_all {
 				$this->FirstRowData['nama'] = ewr_Conv($rs->fields('nama'), 200);
 				$this->FirstRowData['no_kwitansi'] = ewr_Conv($rs->fields('no_kwitansi'), 200);
 				$this->FirstRowData['nomor'] = ewr_Conv($rs->fields('nomor'), 200);
-				$this->FirstRowData['total_ppn'] = ewr_Conv($rs->fields('total_ppn'), 4);
+				$this->FirstRowData['total_ppn'] = ewr_Conv($rs->fields('total_ppn'), 3);
 				$this->FirstRowData['invoice_id'] = ewr_Conv($rs->fields('invoice_id'), 3);
 				$this->FirstRowData['tgl_bayar'] = ewr_Conv($rs->fields('tgl_bayar'), 133);
 				$this->FirstRowData['tanggal'] = ewr_Conv($rs->fields('tanggal'), 133);
@@ -1546,7 +1546,7 @@ class crr_rekap_invoice_all_summary extends crr_rekap_invoice_all {
 
 	// Build dropdown filter
 	function BuildDropDownFilter(&$fld, &$FilterClause, $FldOpr, $Default = FALSE, $SaveFilter = FALSE) {
-		$FldVal = ($Default) ? $fld->DefaultDropDownValue : (is_array($fld->DropDownValue)) ? $fld->DropDownValue : explode(",", $fld->DropDownValue);
+		$FldVal = ($Default) ? $fld->DefaultDropDownValue : $fld->DropDownValue;
 		$sSql = "";
 		if (is_array($FldVal)) {
 			foreach ($FldVal as $val) {
@@ -1581,18 +1581,18 @@ class crr_rekap_invoice_all_summary extends crr_rekap_invoice_all {
 		$FldVal = strval($FldVal);
 		if ($FldOpr == "") $FldOpr = "=";
 		$sWrk = "";
-		if ($FldVal == EWR_NULL_VALUE) {
+		if (ewr_SameStr($FldVal, EWR_NULL_VALUE)) {
 			$sWrk = $FldExpression . " IS NULL";
-		} elseif ($FldVal == EWR_NOT_NULL_VALUE) {
+		} elseif (ewr_SameStr($FldVal, EWR_NOT_NULL_VALUE)) {
 			$sWrk = $FldExpression . " IS NOT NULL";
-		} elseif ($FldVal == EWR_EMPTY_VALUE) {
+		} elseif (ewr_SameStr($FldVal, EWR_EMPTY_VALUE)) {
 			$sWrk = $FldExpression . " = ''";
-		} elseif ($FldVal == EWR_ALL_VALUE) {
+		} elseif (ewr_SameStr($FldVal, EWR_ALL_VALUE)) {
 			$sWrk = "1 = 1";
 		} else {
 			if (substr($FldVal, 0, 2) == "@@") {
 				$sWrk = $this->GetCustomFilter($fld, $FldVal, $this->DBID);
-			} elseif ($FldDelimiter <> "" && trim($FldVal) <> "") {
+			} elseif ($FldDelimiter <> "" && trim($FldVal) <> "" && ($FldDataType == EWR_DATATYPE_STRING || $FldDataType == EWR_DATATYPE_MEMO)) {
 				$sWrk = ewr_GetMultiSearchSql($FldExpression, trim($FldVal), $this->DBID);
 			} else {
 				if ($FldVal <> "" && $FldVal <> EWR_INIT_VALUE) {
@@ -1649,7 +1649,6 @@ class crr_rekap_invoice_all_summary extends crr_rekap_invoice_all {
 			$fld->SearchOperator = ewr_StripSlashes(@$_GET["so_$parm"]);
 		if (isset($_GET["sv_$parm"])) {
 			$fld->DropDownValue = ewr_StripSlashes(@$_GET["sv_$parm"]);
-			if (is_array($fld->DropDownValue)) $fld->DropDownValue = implode(",", $fld->DropDownValue);
 			return TRUE;
 		}
 		return FALSE;
@@ -1830,7 +1829,7 @@ class crr_rekap_invoice_all_summary extends crr_rekap_invoice_all {
 
 	// Load selection from session
 	function LoadSelectionFromSession($parm) {
-		$fld = &$this->fields($parm);
+		$fld = &$this->FieldByParm($parm);
 		$fld->SelectionList = @$_SESSION["sel_r_rekap_invoice_all_$parm"];
 		$fld->RangeFrom = @$_SESSION["rf_r_rekap_invoice_all_$parm"];
 		$fld->RangeTo = @$_SESSION["rt_r_rekap_invoice_all_$parm"];

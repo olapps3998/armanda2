@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<configuration date="2017/02/23" author="e.World Technology Ltd.">
-  <project id="{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}" file="D:\xampp\htdocs\armanda2\armanda2.prp" name="armanda2" product="PHPReportMaker" version="10.0" datetime="2017/02/23 14:05:59" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0">
+<configuration date="2017/08/19" author="e.World Technology Ltd.">
+  <project id="{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}" file="D:\xampp\htdocs\armanda2\armanda2.prp" name="armanda2" product="PHPReportMaker" version="10.0" datetime="2017/08/19 12:12:58" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0">
     <table id="audittrail" name="audittrail" caption="audittrail" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
     <table id="t_customer" name="t_customer" caption="t customer" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
     <table id="t_fee" name="t_fee" caption="t fee" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
@@ -16,5 +16,8 @@
     <table id="r_rekap_invoice_ppn" name="r_rekap_invoice_ppn" caption="Rekap Invoice (PPN)" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
     <table id="v_rekap_hutang" name="v_rekap_hutang" caption="v rekap hutang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
     <table id="r_rekap_hutang" name="r_rekap_hutang" caption="Rekap Hutang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="v_invoice_pelaksanaan_bln" name="v_invoice_pelaksanaan_bln" caption="v invoice pelaksanaan bln" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="v_rekap_hutang_bln" name="v_rekap_hutang_bln" caption="v rekap hutang bln" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
+    <table id="r_rekap_hutang_bln" name="r_rekap_hutang_bln" caption="Rekap Hutang (Group by Bulan)" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
   </project>
 </configuration>

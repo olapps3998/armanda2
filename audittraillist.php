@@ -736,7 +736,7 @@ class caudittrail_list extends caudittrail {
 
 		// Load server side filters
 		if (EW_SEARCH_FILTER_OPTION == "Server") {
-			$sSavedFilterList = $UserProfile->GetSearchFilters(CurrentUserName(), "faudittraillistsrch");
+			$sSavedFilterList = isset($UserProfile) ? $UserProfile->GetSearchFilters(CurrentUserName(), "faudittraillistsrch") : "";
 		} else {
 			$sSavedFilterList = "";
 		}
