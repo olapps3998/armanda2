@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <configuration date="2017/08/19" author="e.World Technology Ltd.">
-  <project id="{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}" file="D:\xampp\htdocs\armanda2\armanda2.prp" name="armanda2" product="PHPReportMaker" version="10.0" datetime="2017/08/19 12:32:31" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0">
+  <project id="{A9671DEB-57B5-48F0-BE68-784D09E2FE7C}" file="D:\xampp\htdocs\armanda2\armanda2.prp" name="armanda2" product="PHPReportMaker" version="10.0" datetime="2017/08/19 12:50:03" languagefolder="phprptlang" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0">
     <table id="audittrail" name="audittrail" caption="audittrail" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
     <table id="t_customer" name="t_customer" caption="t customer" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
     <table id="t_fee" name="t_fee" caption="t fee" userlevel="-2,&quot;Anonymous&quot;,0;0,&quot;Default&quot;,0" priv="1" />
