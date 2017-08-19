@@ -350,6 +350,9 @@
   <project>
     <phrase id="bodytitle" value="Armanda" />
     <phrase id="footertext" value="&amp;copy;2017 e.World Technology Ltd. All rights reserved." />
+    <menu id="23">
+      <phrase id="menutext" value="v invoice pelaksanaan gab" />
+    </menu>
     <menu id="20">
       <phrase id="menutext" value="v invoice pelaksanaan bln" />
     </menu>
@@ -924,6 +927,18 @@
       </field>
       <field id="bln_pelaksanaan">
         <phrase id="fldcaption" value="Bln." />
+      </field>
+    </table>
+    <table id="v_invoice_pelaksanaan_gab">
+      <phrase id="tblcaption" value="v invoice pelaksanaan gab" />
+      <field id="invoice_id">
+        <phrase id="fldcaption" value="invoice id" />
+      </field>
+      <field id="tgl_pelaksanaan">
+        <phrase id="fldcaption" value="tgl pelaksanaan" />
+      </field>
+      <field id="gabung">
+        <phrase id="fldcaption" value="gabung" />
       </field>
     </table>
   </project>
