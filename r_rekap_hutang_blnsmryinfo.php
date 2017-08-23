@@ -395,6 +395,19 @@ class crr_rekap_hutang_bln extends crTableBase {
 			if ($sSqlWrk <> "")
 				$fld->LookupFilters["s"] .= $sSqlWrk;
 			break;
+		case "x_bln_pelaksanaan":
+			$sSqlWrk = "";
+		$sSqlWrk = "SELECT DISTINCT `bln_pelaksanaan`, `bln_pelaksanaan` AS `DispFld`, '' AS `DispFld2`, '' AS `DispFld3`, '' AS `DispFld4` FROM `v_rekap_hutang_bln`";
+		$sWhereWrk = "";
+		$this->bln_pelaksanaan->LookupFilters = array();
+			$fld->LookupFilters += array("s" => $sSqlWrk, "d" => "DB", "f0" => '`bln_pelaksanaan` = {filter_value}', "t0" => "200", "fn0" => "", "dlm" => ewr_Encrypt($fld->FldDelimiter));
+			$sSqlWrk = "";
+		$this->Lookup_Selecting($this->bln_pelaksanaan, $sWhereWrk); // Call Lookup selecting
+		if ($sWhereWrk <> "") $sSqlWrk .= " WHERE " . $sWhereWrk;
+		$sSqlWrk .= " ORDER BY `bln_pelaksanaan` ASC";
+			if ($sSqlWrk <> "")
+				$fld->LookupFilters["s"] .= $sSqlWrk;
+			break;
 		}
 	}
 

@@ -1341,6 +1341,7 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 
 			// Load default values
 			$this->SetSessionDropDownValue($this->nama->DropDownValue, $this->nama->SearchOperator, 'nama'); // Field nama
+			$this->SetSessionDropDownValue($this->bln_pelaksanaan->DropDownValue, $this->bln_pelaksanaan->SearchOperator, 'bln_pelaksanaan'); // Field bln_pelaksanaan
 
 			//$bSetupFilter = TRUE; // No need to set up, just use default
 		} else {
@@ -1352,6 +1353,13 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 			} elseif ($this->nama->DropDownValue <> EWR_INIT_VALUE && !isset($_SESSION['sv_r_rekap_hutang_bln_nama'])) {
 				$bSetupFilter = TRUE;
 			}
+
+			// Field bln_pelaksanaan
+			if ($this->GetDropDownValue($this->bln_pelaksanaan)) {
+				$bSetupFilter = TRUE;
+			} elseif ($this->bln_pelaksanaan->DropDownValue <> EWR_INIT_VALUE && !isset($_SESSION['sv_r_rekap_hutang_bln_bln_pelaksanaan'])) {
+				$bSetupFilter = TRUE;
+			}
 			if (!$this->ValidateForm()) {
 				$this->setFailureMessage($gsFormError);
 				return $sFilter;
@@ -1361,6 +1369,7 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 		// Restore session
 		if ($bRestoreSession) {
 			$this->GetSessionDropDownValue($this->nama); // Field nama
+			$this->GetSessionDropDownValue($this->bln_pelaksanaan); // Field bln_pelaksanaan
 		}
 
 		// Call page filter validated event
@@ -1368,9 +1377,11 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 
 		// Build SQL
 		$this->BuildDropDownFilter($this->nama, $sFilter, $this->nama->SearchOperator, FALSE, TRUE); // Field nama
+		$this->BuildDropDownFilter($this->bln_pelaksanaan, $sFilter, $this->bln_pelaksanaan->SearchOperator, FALSE, TRUE); // Field bln_pelaksanaan
 
 		// Save parms to session
 		$this->SetSessionDropDownValue($this->nama->DropDownValue, $this->nama->SearchOperator, 'nama'); // Field nama
+		$this->SetSessionDropDownValue($this->bln_pelaksanaan->DropDownValue, $this->bln_pelaksanaan->SearchOperator, 'bln_pelaksanaan'); // Field bln_pelaksanaan
 
 		// Setup filter
 		if ($bSetupFilter) {
@@ -1378,6 +1389,9 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 
 		// Field nama
 		ewr_LoadDropDownList($this->nama->DropDownList, $this->nama->DropDownValue);
+
+		// Field bln_pelaksanaan
+		ewr_LoadDropDownList($this->bln_pelaksanaan->DropDownList, $this->bln_pelaksanaan->DropDownValue);
 		return $sFilter;
 	}
 
@@ -1681,6 +1695,10 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 		// Field nama
 		$this->nama->DefaultDropDownValue = EWR_INIT_VALUE;
 		if (!$this->SearchCommand) $this->nama->DropDownValue = $this->nama->DefaultDropDownValue;
+
+		// Field bln_pelaksanaan
+		$this->bln_pelaksanaan->DefaultDropDownValue = EWR_INIT_VALUE;
+		if (!$this->SearchCommand) $this->bln_pelaksanaan->DropDownValue = $this->bln_pelaksanaan->DefaultDropDownValue;
 		/**
 		* Set up default values for extended filters
 		* function SetDefaultExtFilter(&$fld, $so1, $sv1, $sc, $so2, $sv2)
@@ -1703,6 +1721,10 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 		// Check nama extended filter
 		if ($this->NonTextFilterApplied($this->nama))
 			return TRUE;
+
+		// Check bln_pelaksanaan extended filter
+		if ($this->NonTextFilterApplied($this->bln_pelaksanaan))
+			return TRUE;
 		return FALSE;
 	}
 
@@ -1724,6 +1746,18 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 			$sFilter .= "<span class=\"ewFilterValue\">$sWrk</span>";
 		if ($sFilter <> "")
 			$sFilterList .= "<div><span class=\"ewFilterCaption\">" . $this->nama->FldCaption() . "</span>" . $sFilter . "</div>";
+
+		// Field bln_pelaksanaan
+		$sExtWrk = "";
+		$sWrk = "";
+		$this->BuildDropDownFilter($this->bln_pelaksanaan, $sExtWrk, $this->bln_pelaksanaan->SearchOperator);
+		$sFilter = "";
+		if ($sExtWrk <> "")
+			$sFilter .= "<span class=\"ewFilterValue\">$sExtWrk</span>";
+		elseif ($sWrk <> "")
+			$sFilter .= "<span class=\"ewFilterValue\">$sWrk</span>";
+		if ($sFilter <> "")
+			$sFilterList .= "<div><span class=\"ewFilterCaption\">" . $this->bln_pelaksanaan->FldCaption() . "</span>" . $sFilter . "</div>";
 		$divstyle = "";
 		$divdataclass = "";
 
@@ -1753,6 +1787,18 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 			$sWrk = implode("||", $sWrk);
 		if ($sWrk <> "")
 			$sWrk = "\"sv_nama\":\"" . ewr_JsEncode2($sWrk) . "\"";
+		if ($sWrk <> "") {
+			if ($sFilterList <> "") $sFilterList .= ",";
+			$sFilterList .= $sWrk;
+		}
+
+		// Field bln_pelaksanaan
+		$sWrk = "";
+		$sWrk = ($this->bln_pelaksanaan->DropDownValue <> EWR_INIT_VALUE) ? $this->bln_pelaksanaan->DropDownValue : "";
+		if (is_array($sWrk))
+			$sWrk = implode("||", $sWrk);
+		if ($sWrk <> "")
+			$sWrk = "\"sv_bln_pelaksanaan\":\"" . ewr_JsEncode2($sWrk) . "\"";
 		if ($sWrk <> "") {
 			if ($sFilterList <> "") $sFilterList .= ",";
 			$sFilterList .= $sWrk;
@@ -1791,6 +1837,19 @@ class crr_rekap_hutang_bln_summary extends crr_rekap_hutang_bln {
 		}
 		if (!$bRestoreFilter) { // Clear filter
 			$this->SetSessionDropDownValue(EWR_INIT_VALUE, "", "nama");
+		}
+
+		// Field bln_pelaksanaan
+		$bRestoreFilter = FALSE;
+		if (array_key_exists("sv_bln_pelaksanaan", $filter)) {
+			$sWrk = $filter["sv_bln_pelaksanaan"];
+			if (strpos($sWrk, "||") !== FALSE)
+				$sWrk = explode("||", $sWrk);
+			$this->SetSessionDropDownValue($sWrk, @$filter["so_bln_pelaksanaan"], "bln_pelaksanaan");
+			$bRestoreFilter = TRUE;
+		}
+		if (!$bRestoreFilter) { // Clear filter
+			$this->SetSessionDropDownValue(EWR_INIT_VALUE, "", "bln_pelaksanaan");
 		}
 		return TRUE;
 	}
@@ -2196,6 +2255,7 @@ fr_rekap_hutang_blnsummary.ValidateRequired = false; // No JavaScript validation
 
 // Use Ajax
 fr_rekap_hutang_blnsummary.Lists["sv_nama"] = {"LinkField":"sv_nama","Ajax":true,"DisplayFields":["sv_nama","","",""],"ParentFields":[],"FilterFields":[],"Options":[],"Template":""};
+fr_rekap_hutang_blnsummary.Lists["sv_bln_pelaksanaan"] = {"LinkField":"sv_bln_pelaksanaan","Ajax":true,"DisplayFields":["sv_bln_pelaksanaan","","",""],"ParentFields":[],"FilterFields":[],"Options":[],"Template":""};
 </script>
 <?php } ?>
 <?php if ($Page->Export == "" && !$Page->DrillDown) { ?>
@@ -2262,7 +2322,6 @@ if (!$Page->DrillDownInPanel) {
 <div id="c_nama" class="ewCell form-group">
 	<label for="sv_nama" class="ewSearchCaption ewLabel"><?php echo $Page->nama->FldCaption() ?></label>
 	<span class="ewSearchField">
-<?php $Page->nama->EditAttrs["onchange"] = "ewrForms(this).Submit(); " . @$Page->nama->EditAttrs["onchange"]; ?>
 <?php ewr_PrependClass($Page->nama->EditAttrs["class"], "form-control"); ?>
 <select data-table="r_rekap_hutang_bln" data-field="x_nama" data-value-separator="<?php echo ewr_HtmlEncode(is_array($Page->nama->DisplayValueSeparator) ? json_encode($Page->nama->DisplayValueSeparator) : $Page->nama->DisplayValueSeparator) ?>" id="sv_nama" name="sv_nama"<?php echo $Page->nama->EditAttributes() ?>>
 <option value=""><?php echo $ReportLanguage->Phrase("PleaseSelect") ?></option>
@@ -2294,6 +2353,43 @@ if (!$Page->DrillDownInPanel) {
 <input type="hidden" name="s_sv_nama" id="s_sv_nama" value="<?php echo $Page->nama->LookupFilterQuery() ?>"></span>
 </div>
 </div>
+<div id="r_2" class="ewRow">
+<div id="c_bln_pelaksanaan" class="ewCell form-group">
+	<label for="sv_bln_pelaksanaan" class="ewSearchCaption ewLabel"><?php echo $Page->bln_pelaksanaan->FldCaption() ?></label>
+	<span class="ewSearchField">
+<?php ewr_PrependClass($Page->bln_pelaksanaan->EditAttrs["class"], "form-control"); ?>
+<select data-table="r_rekap_hutang_bln" data-field="x_bln_pelaksanaan" data-value-separator="<?php echo ewr_HtmlEncode(is_array($Page->bln_pelaksanaan->DisplayValueSeparator) ? json_encode($Page->bln_pelaksanaan->DisplayValueSeparator) : $Page->bln_pelaksanaan->DisplayValueSeparator) ?>" id="sv_bln_pelaksanaan" name="sv_bln_pelaksanaan"<?php echo $Page->bln_pelaksanaan->EditAttributes() ?>>
+<option value=""><?php echo $ReportLanguage->Phrase("PleaseSelect") ?></option>
+<?php
+	$cntf = is_array($Page->bln_pelaksanaan->AdvancedFilters) ? count($Page->bln_pelaksanaan->AdvancedFilters) : 0;
+	$cntd = is_array($Page->bln_pelaksanaan->DropDownList) ? count($Page->bln_pelaksanaan->DropDownList) : 0;
+	$totcnt = $cntf + $cntd;
+	$wrkcnt = 0;
+	if ($cntf > 0) {
+		foreach ($Page->bln_pelaksanaan->AdvancedFilters as $filter) {
+			if ($filter->Enabled) {
+				$selwrk = ewr_MatchedFilterValue($Page->bln_pelaksanaan->DropDownValue, $filter->ID) ? " selected" : "";
+?>
+<option value="<?php echo $filter->ID ?>"<?php echo $selwrk ?>><?php echo $filter->Name ?></option>
+<?php
+				$wrkcnt += 1;
+			}
+		}
+	}
+	for ($i = 0; $i < $cntd; $i++) {
+		$selwrk = " selected";
+?>
+<option value="<?php echo $Page->bln_pelaksanaan->DropDownList[$i] ?>"<?php echo $selwrk ?>><?php echo ewr_DropDownDisplayValue($Page->bln_pelaksanaan->DropDownList[$i], "", 0) ?></option>
+<?php
+		$wrkcnt += 1;
+	}
+?>
+</select>
+<input type="hidden" name="s_sv_bln_pelaksanaan" id="s_sv_bln_pelaksanaan" value="<?php echo $Page->bln_pelaksanaan->LookupFilterQuery() ?>"></span>
+</div>
+</div>
+<div class="ewRow"><input type="submit" name="btnsubmit" id="btnsubmit" class="btn btn-primary" value="<?php echo $ReportLanguage->Phrase("Search") ?>">
+<input type="reset" name="btnreset" id="btnreset" class="btn hide" value="<?php echo $ReportLanguage->Phrase("Reset") ?>"></div>
 </div>
 </form>
 <script type="text/javascript">
