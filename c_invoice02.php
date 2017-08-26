@@ -134,7 +134,7 @@ $anamabln_ = array(
   "Des"
   );
 
-$msql = "select * from v_invoice_fee where invoice_id = '".$_POST["invoice_id"]."'"; //echo $msql;
+$msql = "select * from v_invoice_fee where invoice_id = '".$_POST["invoice_id"]."'"; //echo $msql; exit;
 $mquery = mysql_query($msql);
 $row = mysql_fetch_array($mquery);
 $html = '';
@@ -176,12 +176,16 @@ $msql2 = "
 		";
 	//order by 
 	//	invoice_id, tanggal desc";
-$mquery2 = mysql_query($msql2);
+$mquery2 = mysql_query($msql2); //echo $msql2; exit;
+$say_tgl = "";
 while($row2 = mysql_fetch_array($mquery2)) {
 	//$tgl_pelaksanaan = strtotime($row2["tanggal"]);
 	//$html .= date("d", $tgl_pelaksanaan).' '.$anamabln_[intval(date("m", $tgl_pelaksanaan))].' '.date("Y", $tgl_pelaksanaan).", ";
-	$html .= $row2["tgl_pelaksanaan"];
+	$say_tgl .= $row2["tgl_pelaksanaan"].", ";
+	//$html .= $row2["tgl_pelaksanaan"].", ";
 }
+$say_tgl = substr($say_tgl, 0, strlen($say_tgl)-2);
+$html .= $say_tgl;
 $html .= '</td></tr></table></td></tr>';
 $html .= '<tr><td>No. Sertifikat/Laporan</td><td>: '.$row["no_sertifikat"].'</td></tr>';
 $html .= '<tr><td colspan="2">&nbsp;</td></tr>';
@@ -199,7 +203,7 @@ $keterangan = $row["keterangan"];
 $terbilang = $row["terbilang"];
 if ($pasal23 == 1) $terbilang = Terbilang($total_ppn);
 
-$mquery = mysql_query($msql);
+$mquery = mysql_query($msql); //echo $msql; exit;
 while($row = mysql_fetch_array($mquery)) {
 	$html .= '
 	<tr>

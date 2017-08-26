@@ -4,6 +4,7 @@
 	Sebelumnya per shipper tgl pelaksanaan nya tdak ada pisahnya bulannya gabung jadi satu;
 	
 	done;
+	tambah view;
 
 2. Invoice dan kwitansi untuk nominal lebih 107 jt tampil nya 100 jt mentoknya;
 
