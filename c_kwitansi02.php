@@ -150,6 +150,8 @@ $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
+$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
+$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>Kwitansi No. '.$row["no_kwitansi"].'</td></tr>';
 $html .= '</table>';
 $html .= '<table border="0">';
