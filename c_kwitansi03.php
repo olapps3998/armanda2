@@ -112,8 +112,8 @@ function Terbilang($x) {
 
 $html = '';
 $html .= '<table border="0">';
-$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
-$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
+//$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
+//$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>Kwitansi No. '.$no_kwitansi.'</td></tr>';
