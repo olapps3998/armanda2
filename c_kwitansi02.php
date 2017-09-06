@@ -145,10 +145,10 @@ $total_ppn = $row["total_ppn"] - $nilai_pasal23; //$row["total_ppn"];
 
 $html = '';
 $html .= '<table border="0">';
-$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
-$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
-$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
-$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
+//$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
+//$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
+//$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
+//$html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
 $html .= '<tr><td width="485">&nbsp;</td><td>&nbsp;</td></tr>';
