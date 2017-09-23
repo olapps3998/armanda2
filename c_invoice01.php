@@ -327,7 +327,7 @@ mysql_select_db($database_conn) or die ("Database tidak ditemukan");
 			<select name="invoice_id">
 				<option value="0">No. Invoice</option>
 				<?php
-				$msql = "select * from t_invoice";
+				$msql = "select * from t_invoice order by nomor";
 				$mquery = mysql_query($msql);
 				while($row = mysql_fetch_array($mquery)) {
 					?>

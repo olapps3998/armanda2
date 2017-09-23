@@ -327,7 +327,7 @@ mysql_select_db($database_conn) or die ("Database tidak ditemukan");
 			<select name="no_kwitansi">
 				<option value="0">No. Kwitansi</option>
 				<?php
-				$msql = "select distinct no_kwitansi from t_invoice where length(no_kwitansi) > 5";
+				$msql = "select distinct no_kwitansi from t_invoice where length(no_kwitansi) > 5 order by no_kwitansi";
 				$mquery = mysql_query($msql);
 				while($row = mysql_fetch_array($mquery)) {
 					?>
